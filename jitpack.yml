@@ -1,0 +1,13 @@
+# 指定 Maven 坐标
+# 格式：group-id:artifact-id:version
+# 这里以示例项目命名为例，可以根据实际情况修改
+coordinates:
+  - groupId: com.OneFive
+    artifactId: commons-cli-OneFive
+    version: 1.0.0
+
+# 指定构建脚本，可选项
+# 这里以 Maven 项目为例
+# 如果你使用的是 Gradle，可以将此行改为 `gradle: ./gradlew build`
+build:
+  gradle: ./gradlew build
