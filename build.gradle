@@ -1,9 +1,10 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
-group 'com.OneFive'
-version '1.0-SNAPSHOT'
+group 'com.github.OneOFF-ive'
+version 'v2.0.0'
 
 repositories {
     mavenCentral()
@@ -14,13 +15,13 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'commons-cli:commons-cli:1.5.0'
 }
-
-jar {
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
     }
 }
-
 test {
     useJUnitPlatform()
 }
