@@ -6,5 +6,7 @@
 ```gradle
 dependencies {
     implementation 'commons-cli:commons-cli:1.5.0'
+    implementation 'com.github.OneOFF-ive:commons-cli-OneFive:v2.0.0'
 }
 ```
+最新版本可以在[JitPack](https://jitpack.io/#OneOFF-ive/commons-cli-OneFive)查看
