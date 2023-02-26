@@ -10,7 +10,7 @@ public class MyCli {
     private final Options options;
     private final CommandLineParser parser;
     private CommandLine line;
-    private final Map<Option, Consumer<Object[]>> functionMap;
+    private final Map<String, Consumer<Object[]>> functionMap;
 
     private MyCli() {
         options = new Options();
@@ -27,7 +27,7 @@ public class MyCli {
 
     public void addOption(Option option, Consumer<Object[]> callback) {
         options.addOption(option);
-        functionMap.put(option, callback);
+        functionMap.put(option.getOpt(), callback);
     }
 
     public void parseAllOptions(String[] args) throws ParseException {
@@ -36,7 +36,7 @@ public class MyCli {
         }
         line = parser.parse(options, args);
         functionMap.forEach((opt, callback) -> {
-            if (line.hasOption(opt.getOpt())) {
+            if (line.hasOption(opt)) {
                 String[] values = line.getOptionValues(opt);
                 callback.accept(values);
             }
@@ -48,5 +48,9 @@ public class MyCli {
             line = parser.parse(options, args);
         }
         return line;
+    }
+
+    public Options getOptions() {
+        return options;
     }
 }
