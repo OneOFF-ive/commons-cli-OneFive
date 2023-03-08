@@ -31,10 +31,7 @@ public class MyCli {
     }
 
     public void parseAllOptions(String[] args) throws ParseException {
-        if (line == null) {
-            line = getCommandLine(args);
-        }
-        line = parser.parse(options, args);
+        line = getCommandLine(args);
         functionMap.forEach((opt, callback) -> {
             if (line.hasOption(opt)) {
                 String[] values = line.getOptionValues(opt);
@@ -44,10 +41,7 @@ public class MyCli {
     }
 
     public CommandLine getCommandLine(String[] args) throws ParseException {
-        if (line != null) {
-            line = parser.parse(options, args);
-        }
-        return line;
+        return parser.parse(options, args);
     }
 
     public Options getOptions() {
